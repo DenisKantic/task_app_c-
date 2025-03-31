@@ -127,7 +127,7 @@ class Program
     static async Task Main()
     {
         var taskManager = TaskManager.GetInstance();
-        _ = BackgroundWorker.PerformBackgroundTask(); // Start auto-save in the background
+        _ = BackgroundWorker.PerformBackgroundTask();
 
         while (true)
         {

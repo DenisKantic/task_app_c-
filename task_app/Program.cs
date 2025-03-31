@@ -105,7 +105,7 @@ class TaskManager : ITaskManager
     }
 }
 
-// Multithreading example - Auto-save
+// Multithreading example - background task check simulation
 class BackgroundWorker
 {
     public static async Task PerformBackgroundTask()

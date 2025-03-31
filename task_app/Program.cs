@@ -10,6 +10,12 @@ abstract class TaskItem
     public abstract void Display();
 }
 
+// Second abstract class representing a worker process
+abstract class WorkerProcess
+{
+    public abstract void Execute();
+}
+
 // Concrete class inheriting TaskItem
 class BasicTask : TaskItem
 {
@@ -105,12 +111,12 @@ class TaskManager : ITaskManager
     }
 }
 
-// Multithreading example - background task check simulation
-class BackgroundWorker
+// Multithreading example - Background task simulation
+class BackgroundWorker : WorkerProcess
 {
-    public static async Task PerformBackgroundTask()
+    public override void Execute()
     {
-        await Task.Run(() =>
+        Task.Run(() =>
         {
             while (true)
             {
@@ -127,7 +133,8 @@ class Program
     static async Task Main()
     {
         var taskManager = TaskManager.GetInstance();
-        _ = BackgroundWorker.PerformBackgroundTask();
+        var backgroundWorker = new BackgroundWorker();
+        backgroundWorker.Execute(); // Start background task
 
         while (true)
         {
